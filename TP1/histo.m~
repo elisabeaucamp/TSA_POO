@@ -1,0 +1,22 @@
+function [ddp, ci] = histo(N, M)
+
+if nargin < 2
+    delta_x = 3.49*std(N)*length(N)^(-1/3);
+    premier_centre = min(N);
+    ci = zeros(1, length(N));
+    
+    for i = 1:length(N)
+       ci(i) = premier_centre + (i-1)*delta_x;
+    end
+    
+    [h, x_out] = hist(N, min(ci):delta_x:max(ci));
+    bar(x_out, h);
+    
+else
+    delta_x = N/M;
+    [h, x_out] = hist(N, min(N):delta_x:max(N));
+    bar(x_out, h);
+    
+end
+
+ddp = 2;

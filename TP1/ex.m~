@@ -1,0 +1,26 @@
+clear variables;
+close all;
+clc;
+%% Question 2.1.1 %%
+N = 1000;
+B = 100;
+m3 = 10;
+sigma3 = 5;
+Fs = 1000;
+t = (0:1:N-1)/Fs;
+
+[x1, x2, x3, Az, Bz] = synthese(N, B, m3, sigma3);
+
+[h, x_out] = hist(x3, min(x3):0.1:max(x3));
+
+subplot(131);
+bar(x_out, h);
+
+
+subplot(132);
+plot(t, x2);
+
+subplot(133);
+plot(t, x1);
+
+%% Question 2.1
